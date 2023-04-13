@@ -1,0 +1,61 @@
+grumphp:
+  stop_on_failure: true
+  hide_circumvention_tip: true
+  process_timeout: 600
+  parallel:
+    enabled: true
+    max_workers: 32
+  ascii:
+    failed: ./tools/grumphp/failed-grumphp.txt
+    succeeded: ./tools/grumphp/success-grumphp.txt
+  environment:
+    variables:
+      GRUMPHP_PROJECT_DIR: "."
+      GRUMPHP_BIN_DIR: "./vendor/bin/"
+    paths:
+      - ./tools/bin
+  tasks:
+    composer:
+      file: ./composer.json
+      no_check_all: false
+      no_check_lock: false
+      no_check_publish: false
+      no_local_repository: false
+      with_dependencies: false
+      strict: false
+    phpstan:
+      metadata:
+        blocking: true
+        enabled: true
+        label: "Check for PHP / Laravel Errors"
+        priority: 1
+      configuration: ./tools/phpstan/phpstan.neon
+      level: 5
+      triggered_by: ['php8.1']
+      memory_limit: "-1"
+      use_grumphp_paths: true
+    phpcsfixer:
+      config: ./tools/php-cs-fixer/config.php-cs-fixer.php
+      allow_risky: true
+      cache_file: ~
+      rules: []
+      using_cache: ~
+      config_contains_finder: true
+      verbose: true
+      diff: false
+      triggered_by: ['php8.1']
+    # Database is docker dependant
+    # phpunit:
+    #   always_execute: true
+    phpcpd:
+      metadata:
+        blocking: false
+        enabled: true
+        label: "Checking Code Duplication"
+        priority: 0
+      directory: ['.']
+      exclude: ['vendor']
+      fuzzy: false
+      min_lines: 5
+      min_tokens: 70
+      triggered_by: ['php8.1']
