@@ -1,71 +1,27 @@
 {
-  "name": "lvef_frontend",
-  "version": "0.0.1",
+  "name": "sandbox",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@mdi/font": "^7.0.96",
-    "axios": "^0.21.1",
-    "cross-env": "^7.0",
-    "crypto-js": "^4.1.1",
-    "laravel-vue-easyforms": "^0.2.79-beta",
-    "minify-css-string": "^1.0.0",
-    "moment-timezone": "^0.5.33",
-    "v-emoji-picker": "^2.3.3",
-    "v-mask": "^2.3.0",
-    "vee-validate": "^3.4.5",
-    "vue-async-computed": "^3.9.0",
-    "vue-router": "^3",
-    "vue-scrollto": "^2.20.0",
-    "vuetify": "^2.6.9",
-    "vuex": "^3.6.2"
+    "laravel-vue-easyforms": "^0.4.7-beta",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/eslint-parser": "^7.21.3",
-    "@vue/cli-plugin-babel": "^5.0.1",
-    "@vue/cli-plugin-eslint": "^5.0.1",
-    "@vue/cli-service": "^5.0.1",
-    "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
-    "deepmerge": "^1.5.2",
-    "eslint": "^8.38.0",
-    "eslint-webpack-plugin": "^4.0.1",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-plugin-vue": "^9.9.0",
-    "husky": "^8.0.0",
-    "sass": "~1.32",
-    "sass-loader": "^10.3.1",
-    "ts-loader": "^9.4.1",
-    "typescript": "^4.8.4",
-    "vue": "^2.6.12",
-    "vue-cli-plugin-vuetify": "^2.5.5",
-    "vue-template-compiler": "^2.6.14",
-    "vuetify-loader": "^1.7.3"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/recommended",
-      "eslint:recommended",
-      "@vue/typescript/recommended"
-    ],
-    "rules": {
-      "vue/valid-v-slot": "off",
-      "@typescript-eslint/no-this-alias": 0,
-      "@typescript-eslint/no-empty-function": 0
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@histoire/plugin-vue": "^0.17.1",
+    "@mdi/font": "^7.2.96",
+    "@types/node": "^20.8.4",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "histoire": "^0.17.2",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-vuetify": "^1.0.2",
+    "vue-tsc": "^1.8.19",
+    "vuetify": "^3.3.17"
+  }
 }

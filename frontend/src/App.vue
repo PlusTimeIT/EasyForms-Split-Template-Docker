@@ -1,62 +1,45 @@
-<template>
-  <v-app>
-    <loading-overlay :loading="pageLoading"/>
-    <transition name="fade">
-      <component v-if="currentLayout !== null" :is="currentLayout" />
-    </transition>
-  </v-app>
-</template>
+<script setup lang="ts">
+import { InputForm } from "laravel-vue-easyforms";
+import { TextField } from "laravel-vue-easyforms";
+import { Button, Icon } from "laravel-vue-easyforms";
+import { ButtonTypes } from "laravel-vue-easyforms";
 
-<script>
-
-import GuestLayout from './layouts/GuestLayout.vue';
-import LoadingOverlay from './components/layout/shared/LoadingOverlay.vue';
-import { appData } from "./mixins/store";
-
-export default {
-    name: 'App',
-    components: {
-        GuestLayout,
-        LoadingOverlay
-    },
-    data: () => ({
-        
+const inputForm = new InputForm({
+  name: "TestInputForm",
+  type: "input",
+  fields: [
+    new TextField({
+      name: "test_basic_text_and_label",
+      placeholder: "Testing Basic Text and Label",
+      label: "Testing Basic Text and Label",
+      required: true,
+      cols: 12,
     }),
-    computed: {
-        pageLoading() {
-            return appData.mainLoader
-        },
-        currentLayout:{
-            get(){
-                return appData.currentLayout
-            },
-            set(newVal){
-                appData.setLayout(newVal)
-            },
-            // find current layout
-        }
-    },
-    created() {
-        this.$router.onReady(() => {
-            this.currentLayout = 'GuestLayout';
-            appData.setMainLoader(false);
-        })
-    },
-    async mounted(){
-        if(!this.$crsfToken.loading && this.$crsfToken.token === false){
-            this.$crsfToken.loading = true;
-            await this.fetchNewToken();
-        }
-    },
-    methods: {
-        async fetchNewToken(){
-            const _this = this;
-            return window.axios.get("/api/csrf-cookie")
-            .then(function(){   
-                _this.$crsfToken.loading = false;
-                _this.$crsfToken.token = true;
-            });
-        },
-    },
-};
+  ],
+  buttons: [
+    new Button({
+      type: ButtonTypes.Process,
+      text: "Process",
+      prepend_icon: new Icon({
+        color: "secondary",
+        icon: "mdi-checkmark",
+      }),
+    }),
+  ],
+});
 </script>
+
+<template>
+  <main>
+    <v-container>
+      <v-row>
+        <v-col> Example Input Form </v-col>
+      </v-row>
+      <v-row>
+        <v-col>
+          <form-loader :form="inputForm" />
+        </v-col>
+      </v-row>
+    </v-container>
+  </main>
+</template>
