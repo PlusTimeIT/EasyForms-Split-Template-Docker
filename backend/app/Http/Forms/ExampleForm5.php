@@ -67,7 +67,6 @@ final class ExampleForm5 extends InputForm
                     RuleItem::make()->setName('required')->setValue(TRUE),
                 ])
             ,
-
             TextField::make()
                 ->setName('name')
                 ->setOrder(0)
@@ -99,7 +98,7 @@ final class ExampleForm5 extends InputForm
             ,
             TextField::make()
                 ->setName('email')
-                ->setOrder(1)
+                ->setOrder(4)
                 ->setHelp('The users email address')
                 ->setLabel('Email')
                 ->setRules([
@@ -108,7 +107,7 @@ final class ExampleForm5 extends InputForm
             ,
             SelectField::make()
                 ->setName('status')
-                ->setOrder(2)
+                ->setOrder(3)
                 ->setHelp('The users status')
                 ->setLabel('Status')
                 ->setItems([
@@ -127,7 +126,7 @@ final class ExampleForm5 extends InputForm
     {
         $form = self::make();
         return $form->setFields(
-            $form->populateFields(Users::find($request->data))
+            $form->populateFields(Users::find($request->id))
         );
     }
 
@@ -137,7 +136,6 @@ final class ExampleForm5 extends InputForm
             if (isset($data[ $field->getName()])) {
                 $field->setValue($data[ $field->getName()]);
             }
-
             return $field;
         })->toArray();
     }
@@ -156,11 +154,7 @@ final class ExampleForm5 extends InputForm
                 ->data('User not found with id:' . $request->id);
         }
 
-        Users::updateUser($request->id, [
-            'username' => $request->username ,
-            'email' => $request->email ,
-            'status' => $request->status,
-        ]);
+        Users::updateUser($request->id, $request->all());
 
         $user = Users::find($request->id);
         return ProcessResponse::make()

@@ -23,22 +23,24 @@ final class ExampleForm1 extends InputForm
     {
         return [
             Alert::make()
+                ->setType('info')
                 ->setTrigger('before_load')
                 ->setColor('secondary')
                 ->setBorder('top')
                 ->setDismissible(FALSE)
-                ->setText(TRUE)
+                ->setTextStyle(TRUE)
                 ->setContents('<p>This is a sticky alert</p> <p><a target="_blank" href="/easyforms/example/2">Check out Example 2 😁</a></p>')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-note-multiple')
                 )
             ,
             Alert::make()
+                ->setType('warning')
                 ->setTrigger('after_load')
                 ->setColor('blue')
                 ->setBorder('right')
                 ->setDismissible(FALSE)
-                ->setText(TRUE)
+                ->setTextStyle(TRUE)
                 ->setProminent(TRUE)
                 ->setAutoCloseTimer(1000)
                 ->setTransition('fade-transition')
@@ -48,14 +50,16 @@ final class ExampleForm1 extends InputForm
                 )
             ,
             Alert::make()
+                ->setType('success')
                 ->setTrigger('before_processing')
                 ->setColor('green')
                 ->setBorder('left')
-                ->setText(TRUE)
+                ->setTextStyle(TRUE)
                 ->setDismissible(TRUE)
                 ->setContents('Processing starting!')
             ,
             Alert::make()
+                ->setType('success')
                 ->setTrigger('after_processing')
                 ->setColor('green')
                 ->setBorder('top')
@@ -81,6 +85,7 @@ final class ExampleForm1 extends InputForm
                 ->setContents('Concat the response: <response-data>')
             ,
             Alert::make()
+                ->setType('info')
                 ->setTrigger('reset_form')
                 ->setColor('grey')
                 ->setBorder('top')

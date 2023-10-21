@@ -51,17 +51,12 @@ final class ExampleForm2 extends InputForm
                 ->setColor('red')
                 ->setBorder('top')
                 ->setDismissible(TRUE)
-                ->setText(TRUE)
+                ->setTextStyle(TRUE)
                 ->setContents('Form Failed!')
                 ->setIcon(
                     Icon::make()->setIcon('mdi-file-excel-box')
                 ),
         ];
-    }
-
-    public function axios(): Axios
-    {
-        return Axios::make();
     }
 
     public function buttons(): array
@@ -182,19 +177,12 @@ final class ExampleForm2 extends InputForm
                     RuleItem::make()->setName('required')->setValue(TRUE),
                 ])
             ,
-            HiddenField::make()
-                ->setName('datetime')
-                ->setOrder(99)
-                ->setValue(\Carbon\Carbon::now()->toIso8601String())
-                ->setRules([
-                    RuleItem::make()->setName('required')->setValue(TRUE),
-                ])
-
-            ,
             SelectField::make()
                 ->setName('favourite_fruit')
                 ->setOrder(8)
                 ->setLabel('What\'s your favourite fruit?')
+                ->setItemText('value')
+                ->setItemValue('id')
                 ->setItems([
                     SelectItem::make()->setId(0)->setValue('Chicken'),
                     SelectItem::make()->setId(1)->setValue('Banana'),
@@ -209,6 +197,8 @@ final class ExampleForm2 extends InputForm
                 ->setName('customer_select')
                 ->setOrder(8)
                 ->setLabel('Select Customers')
+                ->setItemText('value')
+                ->setItemValue('id')
                 ->setItems([
                     SelectItem::make()->setId(0)->setValue('John Doe'),
                     SelectItem::make()->setId(1)->setValue('Sammy Did'),
@@ -249,6 +239,8 @@ final class ExampleForm2 extends InputForm
                 ->setName('rating')
                 ->setOrder(10)
                 ->setLabel('Leave us a rating')
+                ->setItemText('value')
+                ->setItemValue('id')
                 ->setItems([
                     SelectItem::make()->setId(1)->setValue('1 Star'),
                     SelectItem::make()->setId(2)->setValue('2 Star'),
@@ -304,16 +296,6 @@ final class ExampleForm2 extends InputForm
                 ])
             ,
         ];
-    }
-
-    public static function fill(request $request): self
-    {
-        $form = self::make();
-        $fields = $form->fields();
-
-        //check if request->id exists or whatever variable
-        //you are sending via additional form data
-        return $form;
     }
 
     public static function getOfficers()

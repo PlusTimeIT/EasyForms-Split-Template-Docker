@@ -43,7 +43,7 @@ class EmailResetPasswordNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $url = 'http://localhost:3454/#/login/reset?token=' . urlencode($this->token) . '&email=' . urlencode($notifiable->email);
+        $url = 'http://localhost:3456/#/login/reset?token=' . urlencode($this->token) . '&email=' . urlencode($notifiable->email);
         return (new MailMessage())
             ->subject('Reset Password Notification')
             ->line('You are receiving this email because we received a password reset request for your account.')

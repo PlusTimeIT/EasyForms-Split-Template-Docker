@@ -12,7 +12,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "plustime-it/laravel-easyforms": "^0.0.23@beta",
+        "plustime-it/laravel-easyforms": "^0.1.2@beta",
         "predis/predis": "^2.0",
         "sentry/sentry-laravel": "^2.13",
         "spatie/laravel-activitylog": "^4.6",
@@ -74,7 +74,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "phpro/grumphp": true
+            "phpro/grumphp": true,
+            "php-http/discovery": true
         },
         "platform": {
             "php": "8.1.0"

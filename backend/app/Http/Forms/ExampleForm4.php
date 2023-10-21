@@ -161,7 +161,7 @@ final class ExampleForm4 extends ActionForm
         return ProcessResponse::make()
             ->success()
             ->data('Found user id:' . $user->get('id'))
-            ->redirect('/easyforms/example/5/' . $user->get('id'));
+            ->redirect('/example-5/' . $user->get('id'));
     }
 
     public static function process(request $request)
