@@ -1,3 +1,14 @@
+<?php
+
+use App\Http\Forms\ExampleForm1;
+use PlusTimeIT\EasyForms\Controllers\Axios;
+
+$axios = new Axios();
+$input = new ExampleForm1();
+$request = app('request');
+$request->form_name = 'ExampleForm1';
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -18,11 +29,24 @@
             body {
                 font-family: 'Nunito', sans-serif;
             }
+            .max-width {
+                max-width: 100%;
+            }
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center">
-            LaravelVueEasyForms
+        <div class="max-width">
+            <div class="max-width"><b>Laravel Vue EasyForms </b> This is an API - Not for human consumption</div>
+            <div class="max-width"> <b>Version:</b></div>
+            <div class="max-width"><b>Axios Load:</b>
+                    {{ $axios->load(app('request')) }}
+            </div>
+            <div class="max-width"><b>Form Load:</b>
+                    {{ $input->toJson() }}
+            </div>
+            <div class="max-width"><b>Form FILLED:</b>
+                    {{ $input->preFill()->toJson() }}
+            </div>
         </div>
     </body>
 </html>

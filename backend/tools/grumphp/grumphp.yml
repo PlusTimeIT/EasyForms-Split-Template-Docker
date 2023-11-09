@@ -47,15 +47,3 @@ grumphp:
     # Database is docker dependant
     # phpunit:
     #   always_execute: true
-    phpcpd:
-      metadata:
-        blocking: false
-        enabled: true
-        label: "Checking Code Duplication"
-        priority: 0
-      directory: ['.']
-      exclude: ['vendor']
-      fuzzy: false
-      min_lines: 5
-      min_tokens: 70
-      triggered_by: ['php8.1']

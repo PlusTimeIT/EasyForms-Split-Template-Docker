@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -15,6 +16,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // check for super admin role
-        \Gate::before(fn($user, $ability) => $user->hasRole('superAdmin'));
+        \Gate::before(fn ($user, $ability) => $user->hasRole('superAdmin'));
     }
 }

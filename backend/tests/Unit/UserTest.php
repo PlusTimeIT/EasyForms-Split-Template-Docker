@@ -1,7 +1,9 @@
 <?php
+
 namespace Tests\Unit;
 
-use App\Enums\{UserStatus, UserTypes};
+use App\Enums\UserStatus;
+use App\Enums\UserTypes;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
@@ -9,16 +11,17 @@ use Session;
 use Tests\TestCase;
 
 /**
-* Unit Tests for User Model.
-* @see User
-*/
+ * Unit Tests for User Model.
+ *
+ * @see User
+ */
 class UserTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
-    * @var \Illuminate\Session\SessionManager
-    */
+     * @var \Illuminate\Session\SessionManager
+     */
     protected $manager;
 
     public function setUp(): void
@@ -36,6 +39,7 @@ class UserTest extends TestCase
     /**
      * Test is a generic User can be created via a factory.
      * 0 added to function name to process first.
+     *
      * @return void
      */
     public function test_0_if_user_can_be_created()
@@ -46,6 +50,7 @@ class UserTest extends TestCase
 
     /**
      * Test if User can be of Admin Type.
+     *
      * @see UserTypes
      *
      * @return void
@@ -60,6 +65,7 @@ class UserTest extends TestCase
 
     /**
      * Test if User can be of User Type.
+     *
      * @see UserTypes
      *
      * @return void
@@ -74,6 +80,7 @@ class UserTest extends TestCase
 
     /**
      * Test if User can return a successful login.
+     *
      * @see UserTypes
      *
      * @return void
@@ -93,6 +100,7 @@ class UserTest extends TestCase
 
     /**
      * Test if User returns correct guard for Type.
+     *
      * @see UserTypes
      *
      * @return void
@@ -107,6 +115,7 @@ class UserTest extends TestCase
 
     /**
      * Test if a User can be Active.
+     *
      * @see UserStatus
      *
      * @return void
@@ -121,6 +130,7 @@ class UserTest extends TestCase
 
     /**
      * Test if a User can be Archived.
+     *
      * @see UserStatus
      *
      * @return void
@@ -135,6 +145,7 @@ class UserTest extends TestCase
 
     /**
      * Test if a User can be Banned.
+     *
      * @see UserStatus
      *
      * @return void
@@ -149,6 +160,7 @@ class UserTest extends TestCase
 
     /**
      * Test if a User can be Inactive.
+     *
      * @see UserStatus
      *
      * @return void
@@ -163,6 +175,7 @@ class UserTest extends TestCase
 
     /**
      * Test if a User can be Pending.
+     *
      * @see UserStatus
      *
      * @return void

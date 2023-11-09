@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'display' => TRUE,
-    'axios-prefix' => 'axios',
-    'middleware' => 'web',
-    'form-namespace' => 'App\Http\Forms',
-    'form-path' => app_path('Http/Forms'), // must not have trailing forward slash
-    'routes' => [
-        'examples' => FALSE,
-        'global' => TRUE,
+    'display' => true,
+    'prefix' => 'axios',
+    'middleware' => 'axios',
+    'form' => [
+        'namespace' => 'App\Http\Forms',
+        'path' => app_path('Http/Forms'),
     ],
-    'tooltip-icon' => 'mdi-help',
+    'defaults' => [
+        'tooltip-icon' => 'mdi-help',
+    ],
 ];

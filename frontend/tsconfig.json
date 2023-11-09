@@ -13,7 +13,7 @@
     "strict": true,
     "sourceMap": true,
     "allowJs": true,
-    "types": ["node", "vuetify"],
+    "types": ["node", "vuetify", "vite/client"],
     "resolveJsonModule": true,
     "isolatedModules": true,
     "esModuleInterop": true,
@@ -26,10 +26,7 @@
     "noEmit": true,
     "lib": ["esnext", "dom"],
     "baseUrl": ".",
-    "paths": {
-      "#/*": ["/src/*"]
-    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "env.d.ts"],
-  "exclude": ["dist/**/*"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/env.d.ts", "vite.config.ts"],
+  "exclude": ["dist/**/*"],
 }

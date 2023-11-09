@@ -1,7 +1,9 @@
 <?php
+
 namespace Database\Factories;
 
-use App\Enums\{UserStatus, UserTypes};
+use App\Enums\UserStatus;
+use App\Enums\UserTypes;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -39,8 +41,8 @@ class UserFactory extends Factory
      */
     public function unverified()
     {
-        return $this->state(fn(array $attributes) => [
-            'email_verified_at' => NULL,
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
         ]);
     }
 }

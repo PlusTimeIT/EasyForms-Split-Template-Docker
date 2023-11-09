@@ -1,0 +1,3 @@
+backend/docker/Dockerfile
+frontend/docker/Dockerfile
+!.env

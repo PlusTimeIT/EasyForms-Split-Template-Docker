@@ -14,19 +14,19 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'axios/csrf-cookie', 'axios/*', 'email/*', 'auth/*'],
+    'paths' => ['axios/*'],
 
-    'allowed_methods' => ['*'],
+    'allowedMethods' => ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE'],
 
-    'allowed_origins' => ['localhost', 'localhost:3456', 'http://localhost:3456'],
+    'allowed_origins' => explode(',', env('SANCTUM_STATEFUL_DOMAINS')),
 
     'allowed_origins_patterns' => [],
 
-    'allowed_headers' => ['*'],
+    'allowedHeaders' => ['*'],
 
-    'exposed_headers' => [],
+    'exposedHeaders' => ['*'],
 
-    'max_age' => 0,
+    'max_age' => 86400,
 
-    'supports_credentials' => TRUE,
+    'supports_credentials' => true,
 ];

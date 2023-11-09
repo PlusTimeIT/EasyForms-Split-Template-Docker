@@ -73,8 +73,8 @@ return [
         /*
          * Change this if you want to name the related pivots other than defaults
          */
-        'role_pivot_key' => NULL, //default 'role_id',
-        'permission_pivot_key' => NULL, //default 'permission_id',
+        'role_pivot_key' => null, //default 'role_id',
+        'permission_pivot_key' => null, //default 'permission_id',
 
         /*
          * Change this if you want to name the related model primary key other than
@@ -99,7 +99,7 @@ return [
      * Set this to false, if you want to implement custom logic for checking permissions.
      */
 
-    'register_permission_check_method' => TRUE,
+    'register_permission_check_method' => true,
 
     /*
      * When set to true the package implements teams using the 'team_foreign_key'. If you want
@@ -109,7 +109,7 @@ return [
      * 'model_has_permissions'(view the latest version of package's migration file)
      */
 
-    'teams' => FALSE,
+    'teams' => false,
 
     /*
      * When set to true, the required permission names are added to the exception
@@ -117,7 +117,7 @@ return [
      * the default setting is false here for optimum safety.
      */
 
-    'display_permission_in_exception' => FALSE,
+    'display_permission_in_exception' => false,
 
     /*
      * When set to true, the required role names are added to the exception
@@ -125,13 +125,13 @@ return [
      * the default setting is false here for optimum safety.
      */
 
-    'display_role_in_exception' => FALSE,
+    'display_role_in_exception' => false,
 
     /*
      * By default wildcard permission lookups are disabled.
      */
 
-    'enable_wildcard_permission' => FALSE,
+    'enable_wildcard_permission' => false,
 
     'cache' => [
         /*

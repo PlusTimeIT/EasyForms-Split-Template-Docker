@@ -1,45 +1,40 @@
-<script setup lang="ts">
-import { InputForm } from "laravel-vue-easyforms";
-import { TextField } from "laravel-vue-easyforms";
-import { Button, Icon } from "laravel-vue-easyforms";
-import { ButtonTypes } from "laravel-vue-easyforms";
+<script setup>
+import { ref, computed } from 'vue'
+import router from './plugins/router'
+import './styles/forms.css'
 
-const inputForm = new InputForm({
-  name: "TestInputForm",
-  type: "input",
-  fields: [
-    new TextField({
-      name: "test_basic_text_and_label",
-      placeholder: "Testing Basic Text and Label",
-      label: "Testing Basic Text and Label",
-      required: true,
-      cols: 12,
-    }),
-  ],
-  buttons: [
-    new Button({
-      type: ButtonTypes.Process,
-      text: "Process",
-      prepend_icon: new Icon({
-        color: "secondary",
-        icon: "mdi-checkmark",
-      }),
-    }),
-  ],
-});
+const cards = ['Today', 'Yesterday']
+
+const drawer = ref(null)
+const currentRoutes = computed(() => router.getRoutes().sort((a, b) => a.meta.order - b.meta.order));
+
 </script>
 
+
+<style lang="scss" scoped>
+.v-col .loader {
+  min-height: 250px;
+}
+</style>
+
 <template>
-  <main>
-    <v-container>
-      <v-row>
-        <v-col> Example Input Form </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <form-loader :form="inputForm" />
-        </v-col>
-      </v-row>
+  <v-app id="lvef-examples">
+    <v-container class="d-flex flex-row align-start pa-0 align-stretch">
+      <v-navigation-drawer app v-model="drawer" min-width="450px" permanent mini-variant expand-on-hover left>
+        <v-sheet color="grey-lighten-4" class="pa-4">
+          <div>Laravel Vue EasyForms Examples</div>
+        </v-sheet>
+
+        <v-divider />
+
+        <v-list>
+          <v-list-item v-for="route of currentRoutes" :key="route.name" :title="route.name" :to="route.path" />
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-main app class="pa-0">
+        <router-view class="py-2 px-10" />
+      </v-main>
     </v-container>
-  </main>
+  </v-app>
 </template>

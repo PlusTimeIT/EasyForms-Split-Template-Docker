@@ -1,12 +1,10 @@
 <?php
-namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
 /**
  * Handles all callbacks for authenticated routes.
  */
-
 class UserController extends Controller
 {
     use \App\Traits\hasRequestGuard;
@@ -15,7 +13,4 @@ class UserController extends Controller
     {
 
     }
-
-
-
 }

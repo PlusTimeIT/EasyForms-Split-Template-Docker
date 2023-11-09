@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Responses;
 
 /**
@@ -48,7 +49,7 @@ class AxiosResponse
      *
      * @return string Users guard name
      */
-    public function __construct(bool $result = FALSE, mixed $data = NULL, string $message = '', bool $redirect = FALSE)
+    public function __construct(bool $result = false, mixed $data = null, string $message = '', bool $redirect = false)
     {
         $this->result = $result;
         $this->data = $data;
@@ -61,7 +62,7 @@ class AxiosResponse
      *
      * @return string Users guard name
      */
-    public static function create(bool $result, mixed $data, string $message, bool $redirect = FALSE): self
+    public static function create(bool $result, mixed $data, string $message, bool $redirect = false): self
     {
         return new static($result, $data, $message,$redirect);
     }
@@ -75,7 +76,7 @@ class AxiosResponse
     {
         return \Response::json(
             [
-                'result'=>$this->result,
+                'result' => $this->result,
                 'data' => $this->data,
                 'message' => $this->message,
             ],

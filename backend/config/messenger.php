@@ -12,9 +12,9 @@ return [
     /**
      * Define custom database table names - without prefixes.
      */
-    'messages_table' => NULL,
+    'messages_table' => null,
 
-    'participants_table' => NULL,
+    'participants_table' => null,
 
-    'threads_table' => NULL,
+    'threads_table' => null,
 ];

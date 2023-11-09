@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Notifications;
 
 use Illuminate\Auth\Notifications\VerifyEmail;
@@ -39,9 +40,10 @@ class EmailVerificationNotification extends VerifyEmail
     {
         $prefix = 'http://localhost:3456/#/verify-email?url=';
         $verificationUrl = $this->verificationUrl($notifiable);
+
         return (new MailMessage())
             ->line('Please verify your email address.')
-            ->action('Verify Email Address', $prefix . urlencode($verificationUrl))
+            ->action('Verify Email Address', $prefix.urlencode($verificationUrl))
             ->line('Thank you!');
     }
 
