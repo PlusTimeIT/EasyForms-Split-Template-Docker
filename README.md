@@ -1,3 +1,11 @@
-# Backend and Frontend
+# Backend
 
-Both Laravel-Vue_EasyForms and Laravel-EasyForms packages should be hosted locally and mounted 
+Laravel 10+
+
+http://localhost:3450
+
+# Frontend
+
+Vue3 + Vuetify3 + Vite
+
+http://localhost:3454

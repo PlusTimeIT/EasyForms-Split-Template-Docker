@@ -11,7 +11,6 @@ services:
       - proxynet
     volumes:
       - './frontend:/app'
-      - '../Laravel-Vue-EasyForms:/development/plustime/Laravel-Vue-EasyForms'
   lvef.backend:
     env_file: .env
     build:
@@ -31,7 +30,6 @@ services:
       XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
     volumes:
       - './backend:/var/www/html'
-      - '../Laravel-EasyForms:/development/plustime/Laravel-EasyForms'
     networks:
       - proxynet
     depends_on:
