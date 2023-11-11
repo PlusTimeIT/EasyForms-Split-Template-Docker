@@ -37,7 +37,7 @@ final class ComplexServer extends InputForm
         parent::__construct();
 
         return $this
-            ->setName('ComplexServer')
+            ->setName('Input\ComplexServer')
             ->setTitle('Load from axios with conditionals');
     }
 
@@ -126,6 +126,14 @@ final class ComplexServer extends InputForm
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(true),
                     RuleItem::make()->setName('email')->setValue('filter'),
+                ]),
+            TextareaField::make()
+                ->setName('address')
+                ->setOrder(3)
+                ->setLabel('Address')
+                ->setHelp('Leave your address!')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(true),
                 ]),
             ColorPickerField::make()
                 ->setName('customer_colour')

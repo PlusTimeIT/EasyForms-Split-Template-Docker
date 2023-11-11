@@ -24,7 +24,7 @@ final class IconsServer extends ActionForm
         parent::__construct();
 
         return $this
-            ->setName('IconsServer')
+            ->setName('Action\IconsServer')
             ->setTitle('Action Form with conditional icons')
             ->setInline(true);
     }

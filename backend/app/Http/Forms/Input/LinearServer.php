@@ -29,7 +29,7 @@ final class LinearServer extends InputForm
         parent::__construct();
 
         return $this
-            ->setName('LinearServer')
+            ->setName('Input\LinearServer')
             ->setLoader(
                 FormLoader::make()
                 ->setType(FormLoaderTypes::Linear)

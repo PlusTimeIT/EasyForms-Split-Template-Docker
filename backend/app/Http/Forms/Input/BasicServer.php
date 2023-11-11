@@ -26,7 +26,7 @@ final class BasicServer extends InputForm
         parent::__construct();
 
         return $this
-            ->setName('BasicServer')
+            ->setName('Input\BasicServer')
             ->setTitle('Load from page with alerts');
     }
 

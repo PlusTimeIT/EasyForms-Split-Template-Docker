@@ -181,10 +181,6 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-        PlusTimeIT\EasyForms\Providers\EasyForms::class,
-        /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,

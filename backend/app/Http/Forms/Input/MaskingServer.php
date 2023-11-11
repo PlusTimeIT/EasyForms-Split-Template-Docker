@@ -26,7 +26,7 @@ final class MaskingServer extends InputForm
         parent::__construct();
 
         return $this
-            ->setName('MaskingServer')
+            ->setName('Input\MaskingServer')
             ->setTitle('Load from axios with masking');
     }
 
