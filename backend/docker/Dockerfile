@@ -56,6 +56,8 @@ COPY backend/docker/start-container /usr/local/bin/start-container
 COPY backend/docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY backend/docker/php.ini /etc/php/8.3/cli/conf.d/99-sail.ini
 
+RUN chmod o+w ./storage/ -R
+
 RUN chmod +x /usr/local/bin/start-container
 
 EXPOSE 8000
