@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use PlusTimeIT\EasyForms\Controllers\Users;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,18 +15,6 @@ use PlusTimeIT\EasyForms\Controllers\Users;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
-// User Access / Auth Routes
-Route::middleware(['auth:user'])
-    ->controller(UserController::class)
-    ->prefix('auth')
-    ->group(function () {
-        Route::get('/logout', 'logout')->name('auth.logout');
-    });
-
-Route::get('/users/all', fn () => Users::getAllUsers());
-
-Route::get('/forms/1', [PageController::class, 'form1']);
+Route::get('/users', function (Request $request) {
+    return (new UserController)->all();
+});

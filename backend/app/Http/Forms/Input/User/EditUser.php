@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Forms\Input;
+namespace App\Http\Forms\Input\User;
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use PlusTimeIT\EasyForms\Base\InputForm;
 use PlusTimeIT\EasyForms\Elements\Alert;
@@ -10,14 +11,17 @@ use PlusTimeIT\EasyForms\Elements\Icon;
 use PlusTimeIT\EasyForms\Elements\LoadResponse;
 use PlusTimeIT\EasyForms\Elements\ProcessResponse;
 use PlusTimeIT\EasyForms\Elements\RuleItem;
+use PlusTimeIT\EasyForms\Elements\SelectItem;
 use PlusTimeIT\EasyForms\Elements\Tooltip;
 use PlusTimeIT\EasyForms\Enums\AlertTriggers;
 use PlusTimeIT\EasyForms\Enums\AlertTypes;
+use PlusTimeIT\EasyForms\Fields\AutoCompleteField;
 use PlusTimeIT\EasyForms\Fields\PasswordField;
+use PlusTimeIT\EasyForms\Fields\SelectField;
 use PlusTimeIT\EasyForms\Fields\TextField;
 use PlusTimeIT\EasyForms\Traits\Transformable;
 
-final class BasicServer extends InputForm
+final class EditUser extends InputForm
 {
     use Transformable;
 
@@ -26,23 +30,18 @@ final class BasicServer extends InputForm
         parent::__construct();
 
         return $this
-            ->setName('Input\BasicServer')
-            ->setTitle('BasicServer Title');
+            ->setName('Input\User\EditUser')
+            ->setTitle('Edit User');
     }
 
     public function alerts(): array
     {
         return [
             Alert::make()
-                ->setType(AlertTypes::Info)
-                ->setColor('purple')
-                ->setTrigger(AlertTriggers::AfterLoad)
-                ->setText('Loaded - This is a sticky alert that shows when a form has been loaded.'),
-            Alert::make()
                 ->setType(AlertTypes::Error)
                 ->setTrigger(AlertTriggers::FailedValidation)
                 ->setAutoCloseTimer(2500)
-                ->setText('Failed Validation - This alert shows when validation errors are present (will disappear in 2.5 seconds).')
+                ->setText('Please fix the validation errors below')
                 ->setIcon(
                     Icon::make()->setSize('small')->setIcon('mdi-rocket')
                 ),
@@ -50,22 +49,22 @@ final class BasicServer extends InputForm
                 ->setType(AlertTypes::Error)
                 ->setTrigger(AlertTriggers::FailedProcessing)
                 ->setClosable(true)
-                ->setText('Failed Processing - This alert shows if the processing fails - Response: <response-data>'),
+                ->setText('Error: <response-data>'),
             Alert::make()
                 ->setType(AlertTypes::Success)
                 ->setTrigger(AlertTriggers::SuccessProcessing)
                 ->setClosable(true)
-                ->setText('Successful Processing - This alert shows on successful processing [Prominent] - Response: <response-data>'),
+                ->setText('<response-data>'),
             Alert::make()
                 ->setType(AlertTypes::Info)
                 ->setTrigger(AlertTriggers::Cancelled)
                 ->setClosable(true)
-                ->setText('Cancelled - This alert shows when a form has been cancelled.'),
+                ->setText('Your edits have been cancelled'),
             Alert::make()
                 ->setType(AlertTypes::Warning)
                 ->setTrigger(AlertTriggers::FormReset)
                 ->setClosable(true)
-                ->setText('Reset - This alert shows when a form has been reset.'),
+                ->setText('We have reset the form for you.'),
         ];
     }
 
@@ -75,13 +74,13 @@ final class BasicServer extends InputForm
             Button::make()
                 ->setType('process')
                 ->setColor('primary')
-                ->setText('Login')
+                ->setText('Update')
                 ->setPrependIcon(
                     Icon::make()
-                        ->setIcon('mdi-login')
+                        ->setIcon('mdi-user')
                         ->setColor('secondary')
                         ->setTooltip(
-                            Tooltip::make()->setText('Process Form')
+                            Tooltip::make()->setText('Update a user to cache')
                         )
                 )
                 ->setOrder(0),
@@ -115,14 +114,40 @@ final class BasicServer extends InputForm
         ];
     }
 
+    public static function load(request $request): LoadResponse
+    {
+        // we can just set this to preFill if we want to load by axios later
+        return LoadResponse::make()->success()->form((new self())->preFill($request->id));
+    }
+
+    public function preFill($userId): self
+    {
+        // populate fields with data
+        $user = (new UserController)->get($userId);
+        if (!$user) return $this->populateFields();
+
+        // dont want to preload password - so unset it
+        unset($user->password);
+        return $this->populateFields((array) $user);
+    }
+
     public function fields(): array
     {
         return [
             TextField::make()
+                ->setName('first_name')
+                ->setOrder(0)
+                ->setPlaceholder('Edit the first name')
+                ->setHelp('Enter your name so we can greet you')
+                ->setLabel('First Name')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(true),
+                ]),
+            TextField::make()
                 ->setName('username')
                 ->setOrder(0)
-                ->setClearable(true)
-                ->setHelp('OH OH')
+                ->setPlaceholder('Enter a username')
+                ->setHelp('Edit username for login')
                 ->setLabel('Username')
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(true),
@@ -130,38 +155,49 @@ final class BasicServer extends InputForm
             PasswordField::make()
                 ->setName('password')
                 ->setOrder(1)
+                ->setPlaceholder('Enter a password')
                 ->setLabel('Password')
+                ->setRules([
+                    // removed requirement of password field, ultimately making it optional
+                ]),
+            TextField::make()
+                ->setName('email')
+                ->setOrder(3)
+                ->setPlaceholder('Enter an email')
+                ->setHelp('This doesnt do anything, just here to show you an email field')
+                ->setLabel('Email')
+                ->setRules([
+                    RuleItem::make()->setName('required')->setValue(true),
+                    RuleItem::make()->setName('email')->setValue(true),
+                ]),
+            SelectField::make()
+                ->setName('status')
+                ->setOrder(4)
+                ->setPlaceholder('Select a status')
+                ->setLabel('Status')
+                ->setItemValue('id')
+                ->setItemTitle('value')
+                ->setItems([
+                    SelectItem::make()->setId(0)->setValue('Active'),
+                    SelectItem::make()->setId(1)->setValue('Inactive'),
+                ])
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(true),
                 ]),
         ];
     }
 
-    public static function load(request $request): LoadResponse
-    {
-        // we can just set this to preFill if we want to load by axios later
-        return LoadResponse::make()->success()->form((new self())->preFill());
-    }
-
-    public function preFill(): self
-    {
-        // populate fields with data
-        $data = [
-            'username' => 'Pre-populated Username',
-        ];
-        return $this->populateFields($data);
-    }
-
     public static function process(request $request): ProcessResponse
     {
-        //request has been validated, so we know what we have.
-        $username = $request->username;
+        // since we aren't populating any of the fields, we only need to create the process function
 
+        //request has been validated already, so we know what we have.
+        $updated = (new UserController)->update($request);
         //run checks
-        if ($username !== 'Pre-populated Username') {
-            return ProcessResponse::make()->failed()->data('Wrong username silly, use the preloaded one');
+        if (!$updated) {
+            return ProcessResponse::make()->failed()->data('Failed to update user');
         }
 
-        return ProcessResponse::make()->success()->data('Yay you logged in!');
+        return ProcessResponse::make()->success()->data('User updated successfully');
     }
 }

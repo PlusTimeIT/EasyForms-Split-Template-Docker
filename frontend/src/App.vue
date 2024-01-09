@@ -3,8 +3,6 @@ import { ref, computed } from 'vue'
 import router from './plugins/router'
 import './styles/forms.css'
 
-const cards = ['Today', 'Yesterday']
-
 const drawer = ref(null)
 const currentRoutes = computed(() => router.getRoutes().sort((a, b) => a.meta.order - b.meta.order));
 

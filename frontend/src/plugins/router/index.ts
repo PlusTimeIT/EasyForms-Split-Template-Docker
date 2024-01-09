@@ -1,81 +1,57 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
     {
         path: '/',
         name: 'Home',
-        component: () => import(/* webpackChunkName: "home" */ '../../pages/Home.vue'),
+        component: () => import(/* webpackChunkName: "test" */ '../../pages/Home.vue'),
         meta: {
             order: 0,
         }
     },
     {
-        path: '/example/inputform-load-simple',
-        name: '[IF] Basic - SERVER',
-        component: () => import(/* webpackChunkName: "InputForm-Load-Simple" */ '../../pages/InputForm-Load-Simple.vue'),
+        path: '/register',
+        name: '[IF] Register User',
+        component: () => import(/* webpackChunkName: "test1" */ '../../pages/Test1.vue'),
         meta: {
             order: 1,
         }
     },
     {
-        path: '/example/inputform-pass-basic',
-        name: '[IF] Basic - Local',
-        component: () => import(/* webpackChunkName: "InputForm-Pass-Basic" */ '../../pages/InputForm-Pass-Basic.vue'),
+        path: '/login',
+        name: '[IF] User Login',
+        component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test2.vue'),
         meta: {
-            order: 1,
+            order: 21,
         }
     },
     {
-        path: '/example/inputform-load-complex',
-        name: '[IF] Complex - SERVER',
-        component: () => import(/* webpackChunkName: "InputForm-Load-Complex" */ '../../pages/InputForm-Load-Complex.vue'),
-        meta: {
-            order: 2,
-        }
-    },
-    {
-        path: '/example/inputform-load-masking',
-        name: '[IF] Masking - SERVER',
-        component: () => import(/* webpackChunkName: "InputForm-Load-Masking" */ '../../pages/InputForm-Load-Masking.vue'),
+        path: '/users',
+        name: '[AF] User List',
+        component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test3.vue'),
         meta: {
             order: 3,
         }
     },
-    {
-        path: '/example/inputform-load-linear',
-        name: '[IF] Linear Loader - SERVER',
-        component: () => import(/* webpackChunkName: "InputForm-Load-Linear" */ '../../pages/InputForm-Load-Linear.vue'),
-        meta: {
-            order: 3,
-        }
-    },
-    {
-        path: '/example/actionform-load-icons',
-        name: '[AF] Icons - SERVER',
-        component: () => import(/* webpackChunkName: "ActionForm-Load-Icons" */ '../../pages/ActionForm-Load-Icons.vue'),
+     {
+        path: '/users/edit/:id',
+        name: '[IF] User Edit',
+        component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test4.vue'),
         meta: {
             order: 4,
         }
     },
     {
-        path: '/example/actionform-load-buttons',
-        name: '[AF] Buttons - SERVER',
-        component: () => import(/* webpackChunkName: "ActionForm-Load-Buttons" */ '../../pages/ActionForm-Load-Buttons.vue'),
+        path: '/rest-data',
+        name: '[AF] Reset Data',
+        component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test5.vue'),
         meta: {
             order: 5,
         }
     },
-    {
-        path: '/example/load-multi-forms',
-        name: '[MF] Load Multiple Forms',
-        component: () => import(/* webpackChunkName: "LoadMultiForms" */ '../../pages/LoadMultiForms.vue'),
-        meta: {
-            order: 7,
-        }
-    }
 ]
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes
 })
 export default router

@@ -14,17 +14,17 @@ return [
     |
     */
 
-    'paths' => ['axios/*'],
+    'paths' => ['axios/*', 'api/*'],
 
-    'allowedMethods' => ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE'],
+    'allowed_methods' => ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE'],
 
     'allowed_origins' => explode(',', env('SANCTUM_STATEFUL_DOMAINS')),
 
     'allowed_origins_patterns' => [],
 
-    'allowedHeaders' => ['*'],
+    'allowed_headers' => ['*'],
 
-    'exposedHeaders' => ['*'],
+    'exposed_headers' => ['*'],
 
     'max_age' => 86400,
 

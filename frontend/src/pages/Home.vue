@@ -1,13 +1,7 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <v-sheet>
     <v-row>
-      <v-col>
-        This is the home page
-      </v-col>
+        <v-col>
+            This project is meant to show examples of how to use the formloader package.
+        </v-col>
     </v-row>
-  </v-sheet>
 </template>
