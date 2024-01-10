@@ -4,10 +4,8 @@ import router from './plugins/router'
 import './styles/forms.css'
 
 const drawer = ref(null)
-const currentRoutes = computed(() => router.getRoutes().sort((a, b) => a.meta.order - b.meta.order));
-
+const currentRoutes = computed(() => router.getRoutes().sort((a, b) => a.meta.order - b.meta.order).filter((route) => route.meta.show));
 </script>
-
 
 <style lang="scss" scoped>
 .v-col .loader {
@@ -22,9 +20,7 @@ const currentRoutes = computed(() => router.getRoutes().sort((a, b) => a.meta.or
         <v-sheet color="grey-lighten-4" class="pa-4">
           <div>Laravel Vue EasyForms Examples</div>
         </v-sheet>
-
         <v-divider />
-
         <v-list>
           <v-list-item v-for="route of currentRoutes" :key="route.name" :title="route.name" :to="route.path" />
         </v-list>

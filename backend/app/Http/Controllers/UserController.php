@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
-/** 
+/**
  * This user controller is not meant to be copied or used. It is purely used for handling the test data.
- * 
+ *
  */
 class UserController extends Controller
 {
-    protected $users;
+    protected array $users;
 
     public function __construct()
     {
@@ -24,7 +24,7 @@ class UserController extends Controller
     }
 
 
-    public function get(int $userId)
+    public function get(int $userId): bool | object
     {
         if (!isset($this->users[$userId])) {
             return false;
@@ -37,7 +37,7 @@ class UserController extends Controller
         return $this->users;
     }
 
-    public function create(Request $request)
+    public function create(Request $request): bool
     {
         $this->users[] = (object) [
             'first_name' => $request->first_name,
@@ -50,7 +50,7 @@ class UserController extends Controller
         return true;
     }
 
-    public function update(Request $request)
+    public function update(Request $request): bool
     {
         if (!isset($this->users[$request->id])) {
             return false;
@@ -66,7 +66,7 @@ class UserController extends Controller
         return true;
     }
 
-    public function delete(int $userId)
+    public function delete(int $userId): bool
     {
         // UserID should be the index of the user in the array.
         if (!isset($this->users[$userId])) {

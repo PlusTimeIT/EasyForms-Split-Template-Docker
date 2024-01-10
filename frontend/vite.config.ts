@@ -18,6 +18,9 @@ function getServerConfig(env: any) {
   return {
     host: true,
     port: port ?? 3454,
+    watch: {
+      usePolling: true
+    }
   };
 }
 

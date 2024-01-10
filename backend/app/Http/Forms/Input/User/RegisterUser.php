@@ -143,6 +143,7 @@ final class RegisterUser extends InputForm
                 ->setPlaceholder('Enter a password')
                 ->setHelp('Enter a username so you can login in the next form.')
                 ->setLabel('Password')
+                ->setRequired(true)
                 ->setRules([
                     RuleItem::make()->setName('required')->setValue(true),
                 ]),

@@ -7,6 +7,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "test" */ '../../pages/Home.vue'),
         meta: {
             order: 0,
+            show: true,
         }
     },
     {
@@ -15,6 +16,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "test1" */ '../../pages/Test1.vue'),
         meta: {
             order: 1,
+            show: true,
         }
     },
     {
@@ -22,7 +24,8 @@ const routes = [
         name: '[IF] User Login',
         component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test2.vue'),
         meta: {
-            order: 21,
+            order: 2,
+            show: true,
         }
     },
     {
@@ -31,6 +34,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test3.vue'),
         meta: {
             order: 3,
+            show: true,
         }
     },
      {
@@ -39,6 +43,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test4.vue'),
         meta: {
             order: 4,
+            show: false,
         }
     },
     {
@@ -47,6 +52,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "test2" */ '../../pages/Test5.vue'),
         meta: {
             order: 5,
+            show: true,
         }
     },
 ]
