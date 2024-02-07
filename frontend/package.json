@@ -1,7 +1,7 @@
 {
-  "name": "sandbox",
+  "name": "@plustime/single-frontend",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,21 +9,21 @@
     "preview": "vite preview",
     "install:clean": "rm -rf node_modules && rm -rf package-lock.json && npm i"
   },
-  "dependencies": {
-    "axios": "^1.6.5",
-    "laravel-vue-easyforms": "^0.4.40",
-    "vue": "^3.3.6",
-    "vue-router": "^4.2.5"
-  },
   "devDependencies": {
-    "@mdi/font": "^7.2.96",
-    "@types/node": "^20.8.7",
-    "@vitejs/plugin-vue": "^4.4.0",
-    "sass": "^1.69.5",
-    "typescript": "^5.0.2",
-    "vite": "^4.5.0",
-    "vite-plugin-vuetify": "^1.0.2",
-    "vue-tsc": "^1.8.19",
-    "vuetify": "^3.3.22"
-  }
+    "@mdi/font": "^7.4.47",
+    "@types/node": "^20.11.16",
+    "axios": "^1.6.7",
+    "laravel-vite-plugin": "^1.0.1",
+    "sass": "^1.70.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-vuetify": "^2.0.1",
+    "@vitejs/plugin-vue": "^5.0.3"
+},
+"dependencies": {
+    "laravel-vue-easyforms": "^0.4.45",
+    "vue": "^3.4.15",
+    "vue-router": "^4.2.5",
+    "vuetify": "^3.5.2"
+}
 }

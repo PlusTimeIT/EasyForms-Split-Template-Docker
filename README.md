@@ -23,3 +23,10 @@ http://localhost:3450
 Vue3 + Vuetify3 + Vite
 
 http://localhost:3454
+
+## Updates
+
+### 1.0.0
+
+* Update packages (composer and NPM)
+* Start versioning the project properly.
